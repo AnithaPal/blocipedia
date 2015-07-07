@@ -26,3 +26,5 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+###Blocipedia:  A Wikipedia replica where commuity can post,edit,view and delete content. It helps to oraganize content.
