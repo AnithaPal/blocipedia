@@ -15,3 +15,18 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+
+@import "welcome";
+@import "layout";
+
+.user-info {
+  margin-top: 9px;
+  
+}
+
+
+
+nav{
+  margin-top: 5px;
+}
