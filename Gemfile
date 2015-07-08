@@ -11,7 +11,10 @@ group :production do
 end
 group :development do
   gem 'sqlite3'
-end    
+end   
+
+#for password encryption
+gem 'bcrypt'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
