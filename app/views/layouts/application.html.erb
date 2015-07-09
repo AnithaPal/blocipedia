@@ -8,15 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="user_nav">
-    <% if current_user %>
-     Signed as <%= current_user.email %>
-     <%= link_to "Sign out", sign_out_path %>
-    <% else %>
-      <%= link_to "Sign up", sign_up_path %> or
-      <%= link_to "Sign in", sign_in_path %>
-    <% end %>
-  </div>     
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li> <%= link_to "Blocipedia", root_path %> </li>
+      <li> <%= link_to "About", welcome_about_path %> </li>
+      <div class="pull-right user-info">
+          <% if current_user %>
+            Signed as <%= current_user.email %>
+            <%= link_to "Sign out", sign_out_path %>
+          <% else %>
+              <%= link_to "Sign up", sign_up_path %> or
+              <%= link_to "Sign in", sign_in_path %>
+          <% end %>
+      </div>
+    </ul>       
     
   <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -25,6 +30,6 @@
 
 <%= yield %>
 
-
+ </div>
 </body>
 </html>

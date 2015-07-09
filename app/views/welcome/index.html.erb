@@ -1,5 +1,22 @@
 <div class="container">
    <h1>Blocipedia: Social, Markdown Wikis</h1>
-   
-</div>   
+   <div class="content-box">
+      <h2> Create and share markdown wikis </h2><br /> <br />
+      <div class="btn-group">
+       <%= button_to('Sign Up', sign_up_path, :class => 'btn btn-large btn-primary')  %>
+      </div> 
+    </div> 
+    <div class="rows" id="category">
+      <div class="col-md-4 left" id="plan-1">
+        <h3> Create as many public wikis you want! </h3>
+        <%= button_to('Free Plan', '#', :class => 'btn btn-large btn-primary')  %>
+      </div>
+      
+      <div class="col-md-4 right" id="plan-2">
+        <h3>   Create private wikis! </h3>
+        <%= button_to('Premium Plan', '#', :class => 'btn btn-large btn-primary')  %>
 
+      </div>
+    </div >    
+
+</div>   
