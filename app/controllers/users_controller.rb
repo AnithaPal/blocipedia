@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      AuthMailer.test(@user.email, 'Thank you for signing up.').deliver_now
       redirect_to root_url, :notice => "Signed up successfully!"
     else
       render "new", :notice => "Form is invalid"
