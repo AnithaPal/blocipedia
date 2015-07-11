@@ -60,4 +60,7 @@ gem 'devise'
 
 # To securely store sensitive data
 gem 'figaro', '1.0'
+# To authorize different users for different tasks 
+gem 'pundit'
+
 
