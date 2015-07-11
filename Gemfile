@@ -63,4 +63,7 @@ gem 'figaro', '1.0'
 # To authorize different users for different tasks 
 gem 'pundit'
 
+# To create dev data automatically
+gem 'faker'
+
 
