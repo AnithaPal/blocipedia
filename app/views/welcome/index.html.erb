@@ -25,14 +25,14 @@
         <div class="point">
           <h4> Create as many public wikis you want! </h4>
           <br>
-          <%= button_to('Free Plan', '#', :class => 'btn btn-large btn-primary')  %>
+          <%= link_to('Free Plan', new_user_registration_path, :class => 'btn btn-large btn-primary')  %>
         </div>  
       </div>
       
       <div class="col-md-3">
         <div class="point private-padding">
           <h4>   Create private wikis! </h4><br>
-          <%= button_to('Premium Plan', '#', :class => 'btn btn-large btn-primary')  %>
+          <%= link_to('Premium Plan', new_charge_path, :class => 'btn btn-large btn-primary')  %>
         </div>
       </div>
       <div class="col-md-3">
