@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
     authorize @wikis
   end
 
@@ -42,7 +42,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     authorize @wiki
     if @wiki.update_attributes(wiki_params)
-      flash[:notice] = "Wiki was updated sucessfully"
+      flash[:notice] = "Wiki was updated successfully"
       redirect_to @wiki
     else
       flash[:notice] = "There was an error updating a wiki. Please try again" 
@@ -68,6 +68,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private)
   end  
 end

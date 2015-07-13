@@ -8,4 +8,8 @@ class WikiPolicy < ApplicationPolicy
   def destroy?
     user.present? && (record.user == user || user.admin?)
   end 
+
+  def show?
+    (user.present? && ((user.role == 'premium_user') || (user.role == 'admin'))) || record.private == false
+   end
 end
