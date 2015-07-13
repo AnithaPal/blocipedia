@@ -17,7 +17,7 @@ class ChargesController < ApplicationController
 
       # raise charge.inspect
 
-      current_user.update_attributes(role: 'premium_user', stripe_customer_id: customer_id , stripe_subscription_id: customer.subscriptions.first.id)
+      current_user.update_attributes(role: 'premium_user', stripe_id: customer.id)
 
       flash[:success] = "Thanks for subscribing, #{current_user.email}! Feel free to pay me again."
       redirect_to  root_path
