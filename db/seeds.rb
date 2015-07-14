@@ -48,6 +48,8 @@ end
   user.skip_confirmation!
   user.save!
 
+  
+
 
 
  users = User.all

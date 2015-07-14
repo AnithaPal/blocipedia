@@ -10,6 +10,6 @@ class WikiPolicy < ApplicationPolicy
   end 
 
   def show?
-    (user.present? && ((user.role == 'premium_user') || (user.role == 'admin'))) || record.private == false
+    (user.present? && ((user.role == 'premium_user') || (user.role == 'admin'))) || record.private != true
    end
 end
