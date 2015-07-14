@@ -65,7 +65,11 @@ gem 'pundit'
 
 # To create dev data automatically
 gem 'faker'
+
 # For payment integration 
 gem 'stripe'
+
+# To create markdown
+gem 'redcarpet'
 
 
