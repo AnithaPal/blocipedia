@@ -2,7 +2,7 @@ class WikiPolicy < ApplicationPolicy
   
 
   def index?
-    true
+    user.present?
   end 
 
   def destroy?
@@ -10,6 +10,7 @@ class WikiPolicy < ApplicationPolicy
   end 
 
   def show?
-    (user.present? && ((user.role == 'premium_user') || (user.role == 'admin'))) || record.private != true
-   end
+    user.present? && (user.premium_user? || user.admin? || record.private != true)
+  end
+   
 end

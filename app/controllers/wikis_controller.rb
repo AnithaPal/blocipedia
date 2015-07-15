@@ -19,6 +19,7 @@ class WikisController < ApplicationController
 
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
+    # @wiki = current_user.wikis.new(wiki_params)
 
     authorize @wiki
 
