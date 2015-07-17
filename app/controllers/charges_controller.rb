@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
 
       current_user.update_attributes(role: 'premium_user', stripe_id: customer.id)
 
-      flash[:success] = "Thanks for subscribing, #{current_user.email}! Feel free to pay me again."
+      flash[:success] = "Thanks for subscribing, #{current_user.email}!"
       redirect_to  root_path
 
       #Stripe will send back CardErrors, when something goes wrong

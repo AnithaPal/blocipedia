@@ -40,6 +40,16 @@ end
   user.skip_confirmation!
   user.save!
 
+  user = User.new(
+    name: 'premium',
+    email: 'premium@example.com',
+    password: 'helloworld',
+    role: 'premium_user')
+  user.skip_confirmation!
+  user.save!
+
+  
+
 
 
  users = User.all
