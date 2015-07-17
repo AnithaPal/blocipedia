@@ -17,6 +17,20 @@
             <%= f.label :private %>
             <%= f.check_box :private %>
           </div>  
-        <% end %>  
-    <% end %>
-   </div>
+          <h3> Manage Collaborators </h3>
+          <table class="table">
+            <% @wiki.collaborators.each do |collaborator| %>
+            <tr>
+              <td> <%= collaborator.user.name %> </td>
+              <td> 
+                <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
+
+              </td> 
+            </tr>    
+           <% end %> 
+         </table>
+
+        <%= link_to "Add Collaborator", new_collaborator_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
+       <% end %>
+     <% end %>  
+</div>

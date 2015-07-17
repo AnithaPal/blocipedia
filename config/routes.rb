@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   
+  get 'collaborators/create'
+
+  get 'collaborators/destroy'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
@@ -8,7 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :wikis
+  resources :collaborators, only: [:create, :new, :destroy] 
+
   resources :charges, only: [:new, :create]
+  
 
   
 
