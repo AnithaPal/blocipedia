@@ -11,9 +11,8 @@ Rails.application.routes.draw do
     get '/downgrade' => 'registrations#downgrade'
   end
 
-  resources :wikis do
-    resources :collaborators, only: [:create, :destroy]
-  end  
+  resources :wikis
+  resources :collaborators, only: [:create, :new, :destroy] 
 
   resources :charges, only: [:new, :create]
   

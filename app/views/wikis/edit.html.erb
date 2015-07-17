@@ -19,19 +19,18 @@
           </div>  
           <h3> Manage Collaborators </h3>
           <table class="table">
-            <% @users.each do |user| %>
+            <% @wiki.collaborators.each do |collaborator| %>
             <tr>
-              <td> <%= user.name %> </td>
+              <td> <%= collaborator.user.name %> </td>
               <td> 
-                <% if @wiki.users.include? user %>
-                  <%= link_to "Remove Collaborator", wiki_collaborator_path(@wiki, user_id: user.id), method: :delete, class: 'btn btn-danger' %>
-                <% else %>
-                  <%= link_to "Add Collaborator", wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-success' %>
-                <% end %>
+                <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
+
               </td> 
             </tr>    
            <% end %> 
-         </table> 
+         </table>
+
+        <%= link_to "Add Collaborator", new_collaborator_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
        <% end %>
      <% end %>  
 </div>
