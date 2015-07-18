@@ -72,4 +72,6 @@ gem 'stripe'
 # To create markdown
 gem 'redcarpet'
 
+# To preview markdown edit
+gem 'epic-editor-rails'
 
