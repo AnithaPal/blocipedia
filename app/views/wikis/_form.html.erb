@@ -9,8 +9,9 @@
       <div class="form-group">
          <%= f.label :body %>
 
-        <!--  <%= f.text_area :body, class: 'form-control', placeholder: "Enter body" %> -->
-         <div id="epiceditor"> <%= f.text_area :body, class: 'form-control', placeholder: "Enter body" %> </div>
+        <!--  <%#= f.text_area :body, class: 'form-control', placeholder: "Enter body" %> -->
+        <div id="epiceditor"></div>
+        <%= f.hidden_field :body, value: @wiki.body, id: 'epiceditor-body'%> 
       </div>
       
       <div class="form-group">   
@@ -35,11 +36,3 @@
   </div>  
 </div>  
 
-<script src="epiceditor.min.js">
-  var editor = new EpicEditor().load();
-  editor.getElement('editor').body.innerHTML = '<%= escape_javascript(@wiki.body) %>';
-  $('#wiki-form-submit-btn').click(function(){
-    $("#body")[0].value = editor.getElement('editor').body.innerHTML;
-  });
-
-</script>  
