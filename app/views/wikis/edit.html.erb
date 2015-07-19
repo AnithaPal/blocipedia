@@ -1,36 +1,24 @@
 <h1> Edit Wiki </h1>
 <div class="col-md-8">
-     <%= form_for @wiki do |f| %>
-       <div class="form-group">
-         <%= f.label :title %>
-         <%= f.text_field :title, class: 'form-control', placeholder: "Enter post title" %>
-       </div>
-       <div class="form-group">
-         <%= f.label :body %>
-         <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
-       </div>
-       <div class="form-group">
-         <%= f.submit "Save", class: 'btn btn-success' %>
-       </div>
-       <% if current_user.role == "premium_user" || current_user.role == "admin"  %>
-          <div class="form-group">
-            <%= f.label :private %>
-            <%= f.check_box :private %>
-          </div>  
-          <h3> Manage Collaborators </h3>
-          <table class="table">
-            <% @wiki.collaborators.each do |collaborator| %>
-            <tr>
-              <td> <%= collaborator.user.name %> </td>
-              <td> 
-                <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
+  <%= render 'wikis/form' %>
+  <h3> Manage Collaborators </h3>
+  <br />
+  
 
-              </td> 
-            </tr>    
-           <% end %> 
-         </table>
+  <%= link_to "Add Collaborator", new_collaborator_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
+   
+   <br/> <br />
+    <table class="table">
+      <% @wiki.collaborators.each do |collaborator| %>
+      <tr>
+        <td> <strong> <%= collaborator.user.name %> </strong> </td>
+        <td> 
+          <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
 
-        <%= link_to "Add Collaborator", new_collaborator_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
-       <% end %>
-     <% end %>  
+        </td> 
+      </tr>    
+      <% end %> 
+    </table>
+ 
+
 </div>
