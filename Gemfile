@@ -76,3 +76,6 @@ gem 'redcarpet'
 # To preview markdown edit
 gem 'epic-editor-rails'
 
+# paginate
+gem 'will_paginate', '~> 3.0'
+

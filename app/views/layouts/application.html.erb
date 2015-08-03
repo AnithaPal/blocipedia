@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blocipedia</title>
-  <meta name= "viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li> <%= link_to "Blocipedia", root_path %> </li>
-      <li> <%= link_to "About", about_path %> </li>
-      <% if current_user %>
+  <head>
+    <title>Blocipedia</title>
+    <meta name= "viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li> <%= link_to "Blocipedia", root_path %> </li>
+        <li> <%= link_to "About", about_path %> </li>
         <li> <%= link_to "Wikis", wikis_path %> </li>
-        <li> <%= link_to "Create a wiki", new_wiki_path %> </li>
+    
+        <div class="pull-right user-info">
+          <% if current_user %>
+            Hello <%= current_user.name %>! 
+            <%= link_to "Profile", edit_user_registration_path %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
+          <% else %>
+            <%= link_to "Sign In", new_user_session_path %> 
+          <% end %>
+        </div>
+      </ul> 
+
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <button type="button" class="close" data-dismiss="alert">&times; </button>
+          <%= value %>
+        </div>
       <% end %>
 
-      <div class="pull-right user-info">
-        <% if current_user %>
-          Hello <%= current_user.name %>! 
-          <%= link_to "Profile", edit_user_registration_path %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %> 
-        <% end %>
-      </div>
-    </ul> 
+      <%= yield %>
+    </div>
 
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <button type="button" class="close" data-dismiss="alert">&times; </button>
-        <%= value %>
-      </div>
-    <% end %>
-
-    <%= yield %>
-  </div> 
-
-</body>
+  </body>
 </html>
