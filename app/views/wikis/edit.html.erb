@@ -3,22 +3,18 @@
   <%= render 'wikis/form' %>
   <h3> Manage Collaborators </h3>
   <br />
-  
-
   <%= link_to "Add Collaborator", new_collaborator_path(wiki_id: @wiki.id), class: 'btn btn-success' %>
-   
-   <br/> <br />
-    <table class="table">
-      <% @wiki.collaborators.each do |collaborator| %>
+  <br/> <br/>
+  <table class="table">
+    <% @wiki.collaborators.each do |collaborator| %>
       <tr>
-        <td> <strong> <%= collaborator.user.name %> </strong> </td>
-        <td> 
+        <td>
+          <strong> <%= collaborator.user.name %> </strong> 
+        </td>
+        <td>
           <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
-
-        </td> 
-      </tr>    
-      <% end %> 
-    </table>
- 
-
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

@@ -12,7 +12,10 @@
     <ul class="nav nav-tabs">
       <li> <%= link_to "Blocipedia", root_path %> </li>
       <li> <%= link_to "About", about_path %> </li>
-      <li> <%= link_to "Wikis", wikis_path %> </li>
+      <% if current_user %>
+        <li> <%= link_to "Wikis", wikis_path %> </li>
+        <li> <%= link_to "Create a wiki", new_wiki_path %> </li>
+      <% end %>
 
       <div class="pull-right user-info">
         <% if current_user %>
@@ -21,7 +24,8 @@
           <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
         <% else %>
           <%= link_to "Sign In", new_user_session_path %> 
-        <% end %>  
+        <% end %>
+      </div>
     </ul> 
 
     <% flash.each do |key, value| %>

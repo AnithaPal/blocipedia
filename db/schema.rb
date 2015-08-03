@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20150715115814) do
   create_table "collaborators", force: :cascade do |t|
     t.integer  "wiki_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "collaborators", ["user_id"], name: "index_collaborators_on_user_id"
@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 20150715115814) do
   create_table "wikis", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "private"
+    t.boolean  "private",    default: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "wikis", ["user_id"], name: "index_wikis_on_user_id"

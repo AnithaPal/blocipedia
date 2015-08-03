@@ -1,8 +1,7 @@
 class WikiPolicy < ApplicationPolicy
-  
   def index?
     user.present?
-  end 
+  end
 
   def destroy?
     user.present? && (record.user == user || user.admin?)
@@ -12,7 +11,7 @@ class WikiPolicy < ApplicationPolicy
     user.present? && (user.premium_user? || user.admin? || record.private != true)
   end
    
-   class Scope
+  class Scope
     attr_reader :user, :scope
 
     def initialize(user, scope)
@@ -21,25 +20,15 @@ class WikiPolicy < ApplicationPolicy
     end
     
     def resolve
-    wikis = []
-    if user.role == 'admin'
-      wikis = scope.all
-    elsif user.role = "premium_user"
-      all_wikis = scope.all
-      all_wikis.each do |wiki|
-        if wiki.private == false || wiki.user == user || wiki.users.include?(user)
-          wikis << wiki
-        end
+      return scope.where(private: false) unless user
+
+      if user.role == 'admin'
+        scope.all
+      elsif user.role = "premium_user"
+        scope.eager_load(:collaborators).where("wikis.private = ? OR wikis.user_id = ? OR collaborators.user_id = ?", false, user.id, user.id)
+      else
+        scope.eager_load(:collaborators).where("wikis.private = ? OR collaborators.user_id = ?", false, user.id)
       end
-    else
-      all_wikis = scope.all  
-      all_wikis.each do |wiki|
-        if wiki.private == false || wiki.users.include?(user)
-          wikis << wiki
-        end
-      end        
     end
-    return wikis
-    end 
   end
-end     
+end

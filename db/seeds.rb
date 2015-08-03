@@ -48,20 +48,24 @@ end
   user.skip_confirmation!
   user.save!
 
-  
-
-
-
  users = User.all
 
 15.times do
    Wiki.create!(
      user: users.sample,
-     title:  Faker::Lorem.sentence,
+     title:  "Public: #{Faker::Lorem.sentence}",
      body: Faker::Lorem.paragraph
    )
  end
- 
+
+15.times do
+  Wiki.create!(
+    user: users.sample,
+    title: "Private: #{Faker::Lorem.sentence}",
+    body: Faker::Lorem.paragraph,
+    private: true
+   )
+ end
  puts "Seed finished"
  puts "#{User.count} users created"
  puts "#{Wiki.count} wikis created"

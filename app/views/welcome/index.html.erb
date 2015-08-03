@@ -14,29 +14,28 @@
       </div> 
     </div>
     <div class="col-md-3">
-    </div>  
+    </div>
   </div> 
 
   <div class="row text-center">
     <div class="col-md-3">
     </div>
-
-    <div class="col-md-3"  >
-      <div class="point">
-        <h4> Create as many public wikis you want! </h4>
-        <br>
-        <%= link_to('Free Plan', new_user_registration_path, :class => 'btn btn-large btn-primary')  %>
+    <% if current_user %>
+      <div class="col-md-3"  >
+        <div class="point">
+          <h4> Create as many public wikis you want! </h4>
+          <br>
+          <%= link_to('Free Plan', new_user_registration_path, :class => 'btn btn-large btn-primary')  %>
+        </div>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <% if current_user %>
+      <div class="col-md-3">
         <div class="point private-padding">
           <h4>  Create private wikis! </h4><br>
           <%= link_to('Premium Plan', new_charge_path, :class => 'btn btn-large btn-primary')  %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <div class="col-md-3">
     </div>
