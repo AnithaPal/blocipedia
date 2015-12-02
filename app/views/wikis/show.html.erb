@@ -1,17 +1,19 @@
 <div class="media">
   <div class= "media-body">
-    <h1 class ="media-heading">
-      <%=  markdown_to_html @wiki.title %>
-    </h1>
-    <%= markdown_to_html @wiki.body %> 
+    <div class="panel panel-default panel-info">
+      <div class="panel-heading text-center"> <%=  markdown_to_html @wiki.title.titleize %> </div>
+      <div class="panel-body text-justify">
+        <p class="text-justify"> <%= markdown_to_html @wiki.body %> </p>
+        <div>
+          <%= link_to "Back", wikis_path, class: 'btn btn success'  %>
+          <% if current_user.present? %>
+            <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn success' %>
+            <% if policy(@wiki).destroy? %>
+              <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= link_to "Back", wikis_path, class: 'btn btn success'  %>
-    <% if current_user.present? %>
-      <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn success' %> 
-      <% if policy(@wiki).destroy? %>
-          <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<div>

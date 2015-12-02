@@ -1,6 +1,6 @@
  require 'faker'
 
-6.times do 
+6.times do
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.free_email,
@@ -69,4 +69,3 @@ end
  puts "Seed finished"
  puts "#{User.count} users created"
  puts "#{Wiki.count} wikis created"
-
