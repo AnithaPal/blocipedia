@@ -14,11 +14,11 @@
  *= require_self
  */
 
-@import 'base/epiceditor';  
-@import 'preview/bartik';  
-@import 'preview/github';  
-@import 'preview/preview-dark';  
-@import 'editor/epic-dark';  
+@import 'base/epiceditor';
+@import 'preview/bartik';
+@import 'preview/github';
+@import 'preview/preview-dark';
+@import 'editor/epic-dark';
 @import 'editor/epic-light';
 
 @import "bootstrap-sprockets";
@@ -28,14 +28,36 @@
 @import "welcome";
 @import "layout";
 
-.user-info {
-  margin-top: 10px;
-  padding: 10px;
-  
+.body{
+  padding-top: 70px;
+}
+.header-spacer {
+  width: 100%;
+  height: 133px;
 }
 
+.other-content{
+  padding-top: 10px;
+  padding-bottom: 50px;
+  margin: auto;
+}
 
+.hidden-button {
+  display: none;
+}
 
-nav{
-  margin-top: 5px;
+ul{
+  list-style-type: none;
+}
+
+li {
+
+  padding: 5px;
+  font-size: 18px;
+  color: #444;
+
+}
+
+.check-sqr{
+  color: #D050D0;
 }

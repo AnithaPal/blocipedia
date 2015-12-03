@@ -1,4 +1,5 @@
 <h1> Edit Wiki </h1>
+<div class="col-md-2"></div>
 <div class="col-md-8">
   <%= render 'wikis/form' %>
   <h3> Manage Collaborators </h3>
@@ -9,7 +10,7 @@
     <% @wiki.collaborators.each do |collaborator| %>
       <tr>
         <td>
-          <strong> <%= collaborator.user.name %> </strong> 
+          <strong> <%= collaborator.user.name %> </strong>
         </td>
         <td>
           <%= link_to "Remove Collaborator", collaborator_path(collaborator.id), method: :delete, class: 'btn btn-danger' %>
@@ -18,3 +19,4 @@
     <% end %>
   </table>
 </div>
+<div class="col-md-2"></div>

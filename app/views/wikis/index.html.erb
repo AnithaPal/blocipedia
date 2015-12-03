@@ -2,9 +2,9 @@
   <div class="row">
     <h2 class="text-center"> All Wikis </h2>
   </div>
-  <div class="row">  
+  <div class="row">
     <div class="col-md-4">
-    </div> 
+    </div>
     <table class="table table-bordered table-condensed table-striped col-md-4">
       <tbody>
         <% @wikis.each do |wiki| %>
@@ -26,12 +26,12 @@
         <% end %>
       </tbody>
     </table>
-    <p class="text-left"> 
+    <p class="text-left">
       <%= will_paginate @products %>
     </p>
     <div class="col-md-4">
     </div>
-  </div> 
+  </div>
 
   <div class="row text-center">
     <% if policy(Wiki.new).create? %>
@@ -39,4 +39,3 @@
     <% end %>
   </div>
 </div>
-
